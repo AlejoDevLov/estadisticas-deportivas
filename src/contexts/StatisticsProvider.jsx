@@ -12,8 +12,10 @@ export const StatisticsProvider = ({ children }) => {
         totalPartidos: 0
     });
 
+    const [totalPartidos, setTotalPartidos] = useState(5);
+
   return (
-    <StatsContext.Provider value={{ last5Matches, setLast5Matches }}>
+    <StatsContext.Provider value={{ last5Matches, setLast5Matches, totalPartidos, setTotalPartidos }}>
         { children }
     </StatsContext.Provider>
   )
