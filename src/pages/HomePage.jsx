@@ -1,8 +1,11 @@
-import { Last5Matches } from "../components"
+import { useContext } from "react"
+import { Last5Matches, GoalsInLeague } from "../components"
 import { ButtonNext } from "../shared"
+import { StatsContext } from "../contexts/StatisticsProvider"
 
 export const HomePage = () => {
 
+  const { numberFormMenu } = useContext(StatsContext)
 
   return (
     <div className="p-4 bg-blue-950 text-white select-none min-h-screen">
@@ -11,7 +14,13 @@ export const HomePage = () => {
             <h2 className="text-3xl text-slate-400">Tu app de estadísticas favorita</h2>
         </header>
 
-        <Last5Matches/>
+        {
+          (numberFormMenu === 1) && <Last5Matches/>
+        }
+
+        {
+          (numberFormMenu === 2) && <GoalsInLeague localidad="local"/>
+        }
 
         <ButtonNext/>
     </div>

@@ -12,10 +12,21 @@ export const StatisticsProvider = ({ children }) => {
         totalPartidos: 0
     });
 
+    const [numberFormMenu, setNumberFormMenu] = useState(1);
+
     const [totalPartidos, setTotalPartidos] = useState(5);
 
+    const valuesProvider = {
+      numberFormMenu,
+      setNumberFormMenu,
+      last5Matches, 
+      setLast5Matches, 
+      totalPartidos, 
+      setTotalPartidos
+    }
+
   return (
-    <StatsContext.Provider value={{ last5Matches, setLast5Matches, totalPartidos, setTotalPartidos }}>
+    <StatsContext.Provider value={ valuesProvider }>
         { children }
     </StatsContext.Provider>
   )
