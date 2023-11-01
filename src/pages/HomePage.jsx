@@ -19,7 +19,7 @@ export const HomePage = () => {
         }
 
         {
-          (numberFormMenu === 2) && <GoalsInLeague localidad="local"/>
+          (numberFormMenu === 2) && <GoalsInLeague/>
         }
 
         <ButtonNext/>
