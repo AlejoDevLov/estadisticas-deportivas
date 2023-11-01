@@ -1,4 +1,5 @@
-import { Form } from "../components"
+import { Last5Matches } from "../components"
+import { ButtonNext } from "../shared"
 
 export const HomePage = () => {
 
@@ -10,17 +11,9 @@ export const HomePage = () => {
             <h2 className="text-3xl text-slate-400">Tu app de estadísticas favorita</h2>
         </header>
 
-        {/* Formulario Component */}
-        <div className="flex flex-col md:flex-row flex-wrap gap-6 items-center justify-center">
-          <Form localidad="local"/>
-          <Form localidad="visitante"/>
-          <div className="w-full">
-            <input type="submit" value="Calcular" className="border-2 border-white py-2 px-6 text-2xl rounded-full
-              cursor-pointer mt-6  mx-auto block hover:border-cyan-400 hover:text-cyan-400"/>
-          </div>
-        </div>
-        
-        
+        <Last5Matches/>
+
+        <ButtonNext/>
     </div>
   )
 }
