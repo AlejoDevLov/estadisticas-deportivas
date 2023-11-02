@@ -13,7 +13,7 @@ export const HeaderForm = ({ localidad }) => {
             </span>
         </p>
             
-            <AddRemoveButton agregarPartidos={agregarPartidos} removerPartidos={removerPartidos}/>
+        <AddRemoveButton agregarPartidos={agregarPartidos} removerPartidos={removerPartidos}/>
     </>
   )
 }
