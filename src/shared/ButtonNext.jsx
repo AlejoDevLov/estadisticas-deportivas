@@ -11,7 +11,7 @@ export const ButtonNext = () => {
   const valueButton = numberFormMenu !== 3 ? 'Siguiente' : 'Calcular';
 
   return (
-    <div className="w-full">
+    <div className="w-full mt-20">
         <input
           onClick={nextFormMenu}
           type="submit" 

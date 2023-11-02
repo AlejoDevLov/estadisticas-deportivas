@@ -37,7 +37,7 @@ export const Form = ({ localidad }) => {
   return (
     <div className="text-center w-full md:w-[45%]">
             
-        <h3 className="text-2xl font-bold">Equipo { localidad }</h3>
+        <h3 className="text-3xl font-bold text-amber-500">Equipo { localidad }</h3>
         <hr className="my-4"/>
         <form onSubmit={submitForm}>    
             <HeaderForm localidad={localidad}/>
