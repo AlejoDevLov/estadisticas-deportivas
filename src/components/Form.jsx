@@ -3,34 +3,13 @@ import { GoalsInputForm, HeaderForm } from "./";
 import { StatsContext } from "../contexts/StatisticsProvider";
 
 
-export const Form = ({ localidad }) => {
+export const Form = ({ localidad, setResultadoPartidos }) => {
 
     const { totalPartidos } = useContext(StatsContext);
 
     const inputsCuantity = Array.from({ length: totalPartidos }, ( v, i ) => (
-        <GoalsInputForm key={i}/>
+        <GoalsInputForm key={i} golesMarcadosYRecibidos = { setResultadoPartidos } keyValue={i}/>
     ));
-
-    // const submitForm = e => {
-    //     let marcados = 0;
-    //     e.target.marcados.forEach( item => {
-    //         marcados += Number(item.value);
-    //     });
-
-    //     let recibidos = 0;
-    //     e.target.recibidos.forEach( item => {
-    //         recibidos += Number(item.value);
-    //     });
-
-    //     const newStateProvider = {
-    //         marcados,
-    //         recibidos,
-    //         totalPartidos
-    //     }
-
-    //     setLast5Matches({ ...newStateProvider });
-    //     setLast5Matches( (matches) => console.log(matches));
-    // }
 
   return (
     <div className="text-center w-full md:w-[45%]">

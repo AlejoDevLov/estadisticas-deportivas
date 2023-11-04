@@ -13,7 +13,7 @@ export const StatisticsProvider = ({ children }) => {
 
     const [numberFormMenu, setNumberFormMenu] = useState(1);
     const [totalPartidos, setTotalPartidos] = useState(5);
-    const [resultsPerPage, setResultsPerPage] = useState(initialState)
+    const [resultsPerPage, setResultsPerPage] = useState(initialState);
 
     const valuesProvider = {
       numberFormMenu,
@@ -21,7 +21,7 @@ export const StatisticsProvider = ({ children }) => {
       totalPartidos, 
       setTotalPartidos,
       resultsPerPage,
-      setResultsPerPage
+      setResultsPerPage,
     }
 
   return (
