@@ -6,10 +6,12 @@ export const useCalculateButton = () => {
     const { numberFormMenu, setNumberFormMenu } = useContext(StatsContext)
 
     const nextFormMenu = () => {
-        if ( numberFormMenu === 3 ) return;
-        setNumberFormMenu( currentNumber => currentNumber + 1 );
-    }
+      console.log('Enviando');
 
+      if ( numberFormMenu === 3 ) return;
+      setNumberFormMenu( currentNumber => currentNumber + 1 );
+    }
+    
   return {
     nextFormMenu
   }

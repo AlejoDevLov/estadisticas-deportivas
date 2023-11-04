@@ -8,8 +8,8 @@ export const HeaderForm = ({ localidad }) => {
 
   return (
     <>
-        <p className="font-semibold text-xl">Goles como {localidad}
-            <span className="font-light text-base">(Últimos <span className="font-bold text-xl text-emerald-500">{totalPartidos}</span> partidos)
+        <p className="font-semibold text-xl">Partidos como {localidad}
+            <span className="font-light text-base">(Últimos <span className="font-bold text-xl text-emerald-500">{totalPartidos}</span> partidos en general)
             </span>
         </p>
             

@@ -5,7 +5,6 @@ import { StatsContext } from "../contexts/StatisticsProvider";
 export const ButtonNext = () => {
 
   const { numberFormMenu } = useContext(StatsContext)
-
   const { nextFormMenu } = useCalculateButton();
 
   const valueButton = numberFormMenu !== 3 ? 'Siguiente' : 'Calcular';

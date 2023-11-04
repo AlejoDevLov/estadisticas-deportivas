@@ -1,7 +1,6 @@
 
 export const GoalsInputForm = () => {
 
-
   return (
     <div className="flex text-xl my-4">
         <div className="space-y-2">

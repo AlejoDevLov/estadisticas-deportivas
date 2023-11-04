@@ -11,7 +11,7 @@ export const useHeaderForm = () => {
     };
 
     const removerPartidos = () => {
-        if(totalPartidos === 2) return;
+        if(totalPartidos === 1) return;
         setTotalPartidos( totalPartidos - 1 );
     };
 
