@@ -3,7 +3,7 @@ export const AddRemoveButton = ({ removerPartidos, agregarPartidos }) => {
   return (
     <div className="flex items-center justify-center gap-x-4 mt-2">
             
-        <div className="w-8 cursor-pointer" onClick={removerPartidos}>
+        <div className="w-8 cursor-pointer" onClick={agregarPartidos}>
         <svg fill="none" className="hover:stroke-red-400 active:stroke-red-700" stroke="currentColor" stroke-width="1.5" 
             viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
             <path stroke-linecap="round" stroke-linejoin="round" 
@@ -12,7 +12,7 @@ export const AddRemoveButton = ({ removerPartidos, agregarPartidos }) => {
         </svg>
         </div>
         
-        <div className="w-8 cursor-pointer" onClick={agregarPartidos}>
+        <div className="w-8 cursor-pointer" onClick={removerPartidos}>
             <svg fill="none" className="hover:stroke-red-400 active:stroke-red-700" stroke="currentColor" stroke-width="1.5" 
                 viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                 <path stroke-linecap="round" stroke-linejoin="round" 
