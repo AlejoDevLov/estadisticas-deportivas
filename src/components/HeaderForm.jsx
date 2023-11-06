@@ -1,10 +1,13 @@
+import { useContext } from "react";
 import { useHeaderForm } from "../hooks";
 import { AddRemoveButton } from "../shared";
+import { StatsContext } from "../contexts/StatisticsProvider";
 
 
 export const HeaderForm = ({ localidad }) => {
 
-    const { agregarPartidos, removerPartidos, totalPartidos } = useHeaderForm();
+  const { totalPartidos, setTotalPartidos } = useContext(StatsContext)
+  const { agregarPartidos, removerPartidos } = useHeaderForm(totalPartidos, setTotalPartidos);
 
   return (
     <>

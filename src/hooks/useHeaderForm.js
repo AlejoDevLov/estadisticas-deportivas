@@ -1,24 +1,19 @@
 import { useContext } from "react";
 import { StatsContext } from "../contexts/StatisticsProvider";
-import { ResultsContext } from "../contexts/Last5MatchesProvider";
 
-export const useHeaderForm = () => {
+export const useHeaderForm = (partidos, setPartidos) => {
 
-    const { totalPartidos, setTotalPartidos } = useContext(StatsContext);
-    const { setGolesEquipoVisitante, setGolesEquipoLocal } = useContext(ResultsContext);
+    const { totalPartidos } = useContext(StatsContext);
 
     const agregarPartidos = () => {
-        if(totalPartidos === 5) return;
-        setTotalPartidos( totalPartidos + 1 );
-        setGolesEquipoLocal( {} );
-        setGolesEquipoVisitante( {} );
+        if(partidos === 5) return;
+        setPartidos( partidos + 1 );
     };
 
     const removerPartidos = () => {
-        if(totalPartidos === 1) return;
-        setTotalPartidos( totalPartidos - 1 );
-        setGolesEquipoLocal( {} );
-        setGolesEquipoVisitante( {} );
+        if(partidos === 1) return;
+        setPartidos( partidos - 1 );
+
     };
 
   return {

@@ -13,6 +13,7 @@ export const StatisticsProvider = ({ children }) => {
 
     const [numberFormMenu, setNumberFormMenu] = useState(1);
     const [totalPartidos, setTotalPartidos] = useState(5);
+    const [enfrentamientosJuntos, setEnfrentamientosJuntos] = useState(1);
     const [resultsPerPage, setResultsPerPage] = useState(initialState);
 
     const valuesProvider = {
@@ -22,6 +23,8 @@ export const StatisticsProvider = ({ children }) => {
       setTotalPartidos,
       resultsPerPage,
       setResultsPerPage,
+      enfrentamientosJuntos,
+      setEnfrentamientosJuntos
     }
 
   return (
