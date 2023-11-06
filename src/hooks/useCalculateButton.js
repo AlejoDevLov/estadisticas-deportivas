@@ -5,37 +5,43 @@ import { ResultsContext } from "../contexts/Last5MatchesProvider";
 export const useCalculateButton = () => {
 
     const { numberFormMenu, setNumberFormMenu } = useContext(StatsContext);
-    const { golesEquipoLocal, golesEquipoVisitante } = useContext(ResultsContext);
+    const { golesEquipoLocal, golesEquipoVisitante, resultadosEquipoLocal, resultadosEquipoVisitante } = useContext(ResultsContext);
 
     const nextFormMenu = () => {
+      switch(numberFormMenu){
+        case 1
+          : if (!isFirstFormValid(golesEquipoLocal) || !isFirstFormValid(golesEquipoVisitante)) return;
+          setNumberFormMenu( currentNumber => currentNumber + 1 );
+          break;
 
-      if( numberFormMenu === 1 ){
-        if (!isFirstFormValidLocal() || !isFirstFormValidAway()) return;
+        case 2
+          : if( !isSecondFormValid(resultadosEquipoLocal) || !isSecondFormValid(resultadosEquipoVisitante) ) return;
+          setNumberFormMenu( currentNumber => currentNumber + 1 );
+          break;
+
+        case 3
+          : return;
       }
-
-      if ( numberFormMenu === 3 ) return;
-      setNumberFormMenu( currentNumber => currentNumber + 1 );
-    }
-
-    const isFirstFormValidLocal = () => {
-      const resultadosEquipoLocal = Object.values(golesEquipoLocal);
-      const values = resultadosEquipoLocal.map( result => Object.values(result));
-      const totalResultados = values.join().split(',');
-      const isValidForm = totalResultados.every( value => parseInt(value) >= 0);
-
-      return isValidForm;
-    }
-
-    const isFirstFormValidAway = () => {
-      const resultadosEquipoVisitante = Object.values(golesEquipoVisitante);
-      const values = resultadosEquipoVisitante.map( result => Object.values(result));
-      const totalResultados = values.join().split(',');
-      const isValidForm = totalResultados.every( value => parseInt(value) >= 0);
-
-      return isValidForm;
     }
     
   return {
     nextFormMenu
   }
+}
+
+const isFirstFormValid = (golesEquipo) => {
+  const resultadosEquipo = Object.values(golesEquipo);
+  const values = resultadosEquipo.map( result => Object.values(result));
+  const totalResultados = values.join().split(',');
+  const isValidForm = totalResultados.every( value => parseInt(value) >= 0);
+
+  return isValidForm;
+}
+
+const isSecondFormValid = (resultados) => {
+  const totalResultados = resultados[1];
+  const totalResultadosArray = Object.values(totalResultados);
+  const isValid = totalResultadosArray.every( value => value >= 0);
+
+  return isValid;
 }
