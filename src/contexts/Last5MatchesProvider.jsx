@@ -9,6 +9,7 @@ const initialStateSecondForm = {
 }
 
 
+
 export const Last5MatchesProvider = ({ children }) => {
 
     const [golesEquipoLocal, setGolesEquipoLocal] = useState({});
@@ -17,6 +18,9 @@ export const Last5MatchesProvider = ({ children }) => {
     // Estado para la segunda pagina
     const [resultadosEquipoLocal, setResultadosEquipoLocal] = useState(initialStateSecondForm);
     const [resultadosEquipoVisitante, setResultadosEquipoVisitante] = useState(initialStateSecondForm);
+
+    // Estado para tercera pagina
+    const [resultadosBetween, setResultadosBetween] = useState({});
 
 
     const values = {
@@ -28,7 +32,10 @@ export const Last5MatchesProvider = ({ children }) => {
         resultadosEquipoLocal,
         setResultadosEquipoLocal,
         resultadosEquipoVisitante,
-        setResultadosEquipoVisitante
+        setResultadosEquipoVisitante,
+
+        resultadosBetween,
+        setResultadosBetween
     }
 
     return (

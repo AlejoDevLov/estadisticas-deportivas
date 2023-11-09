@@ -3,7 +3,7 @@ import { StatsContext } from "../contexts/StatisticsProvider";
 
 export const GoalsInputForm = ({ golesMarcadosYRecibidos, keyValue }) => {
 
-  const { totalPartidos } = useContext(StatsContext);
+  const { totalPartidos, enfrentamientosJuntos } = useContext(StatsContext);
 
   const [goles, setGoles] = useState({
     marcados: 0,
@@ -40,7 +40,7 @@ export const GoalsInputForm = ({ golesMarcadosYRecibidos, keyValue }) => {
     golesMarcadosYRecibidos( state =>( { ...state, [keyValue]: { ...state[keyValue], 'marcados': numberMarcados} }));
 
     golesMarcadosYRecibidos( state =>( { ...state, [keyValue]: { ...state[keyValue], 'recibidos': numberRecibidos} }));
-  }, [totalPartidos]);
+  }, [totalPartidos, enfrentamientosJuntos, ]);
   
 
 

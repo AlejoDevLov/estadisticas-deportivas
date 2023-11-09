@@ -47,7 +47,7 @@ export const GoalsInLeague = () => {
             name="local"
             value={partidosValue.local}
             onChange={onChangeNumeroPartidos}
-            className="border border-zinc-700 rounded-md w-28 text-black p-2 mx-3 text-base"
+            className="border border-zinc-700 rounded-md w-28 text-black p-2 mx-3 text-base text-center"
           />
         </div>
         <div className="md:w-[45%] ">
@@ -72,7 +72,7 @@ export const GoalsInLeague = () => {
             value={partidosValue.visitante}
             name="visitante"
             onChange={onChangeNumeroPartidos}
-            className="border border-zinc-700 rounded-md w-28 text-black p-2 mx-3 text-base"
+            className="border border-zinc-700 rounded-md w-28 text-black p-2 mx-3 text-base text-center"
           />
         </div>
       </form>

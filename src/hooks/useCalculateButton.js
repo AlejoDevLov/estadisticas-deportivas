@@ -5,7 +5,8 @@ import { ResultsContext } from "../contexts/Last5MatchesProvider";
 export const useCalculateButton = () => {
 
     const { numberFormMenu, setNumberFormMenu } = useContext(StatsContext);
-    const { golesEquipoLocal, golesEquipoVisitante, resultadosEquipoLocal, resultadosEquipoVisitante } = useContext(ResultsContext);
+    const { golesEquipoLocal, golesEquipoVisitante, resultadosEquipoLocal,
+      resultadosEquipoVisitante, resultadosBetween } = useContext(ResultsContext);
 
     const nextFormMenu = () => {
       switch(numberFormMenu){
@@ -20,7 +21,8 @@ export const useCalculateButton = () => {
           break;
 
         case 3
-          : return;
+          : isFirstFormValid(resultadosBetween);
+          return;
       }
     }
     

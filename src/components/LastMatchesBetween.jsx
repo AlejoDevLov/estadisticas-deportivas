@@ -9,11 +9,13 @@ export const LastMatchesBetween = () => {
 
   const { enfrentamientosJuntos, setEnfrentamientosJuntos } = useContext(StatsContext)
   const { agregarPartidos, removerPartidos } = useHeaderForm(enfrentamientosJuntos, setEnfrentamientosJuntos);
-  const { setResultadosEquipoLocal } = useContext(ResultsContext);
+  const { resultadosBetween, setResultadosBetween } = useContext(ResultsContext);
 
   const componentsPartidos = Array.from({ length: enfrentamientosJuntos }, (v, i) => {
-    return <GoalsInputForm golesMarcadosYRecibidos={setResultadosEquipoLocal} keyValue={1} key={i}/>
-  })
+    return <GoalsInputForm golesMarcadosYRecibidos={setResultadosBetween} keyValue={i} key={i}/>
+  });
+
+  console.log(resultadosBetween);
 
   return (
     <div className=" flex flex-col items-center justify-center ">
