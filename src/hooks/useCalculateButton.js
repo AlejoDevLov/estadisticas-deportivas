@@ -8,6 +8,14 @@ export const useCalculateButton = () => {
     const { golesEquipoLocal, golesEquipoVisitante, resultadosEquipoLocal,
       resultadosEquipoVisitante, resultadosBetween } = useContext(ResultsContext);
 
+      const argsPromedioGoles = {
+        golesEquipoLocal,
+        golesEquipoVisitante,
+        resultadosEquipoLocal,
+        resultadosEquipoVisitante,
+        resultadosBetween
+      }
+
     const nextFormMenu = () => {
       switch(numberFormMenu){
         case 1
@@ -22,6 +30,7 @@ export const useCalculateButton = () => {
 
         case 3
           : isFirstFormValid(resultadosBetween);
+          promedioGoles(argsPromedioGoles);
           return;
       }
     }
@@ -46,4 +55,61 @@ const isSecondFormValid = (resultados) => {
   const isValid = totalResultadosArray.every( value => value >= 0);
 
   return isValid;
+}
+
+
+
+// Calcular promedio de goles
+const promedioGoles = ( argsPromedioGoles ) => {
+  const { golesEquipoLocal, golesEquipoVisitante, resultadosEquipoVisitante, resultadosEquipoLocal, resultadosBetween } = argsPromedioGoles;
+
+  const promedioLocalPrimerForm = promedioGolesPrimerFormulario(golesEquipoLocal);
+  const promedioVisitantePrimerForm = promedioGolesPrimerFormulario(golesEquipoVisitante);
+
+  const promedioLocalSegundoForm = promedioGolesSegundoFormulario(resultadosEquipoLocal);
+  const promedioVisitanteSegundoForm = promedioGolesSegundoFormulario(resultadosEquipoVisitante);
+  
+  const promedioTercerForm = promedioGolesTercerFormulario(resultadosBetween);
+
+  console.log({ promedioVisitanteSegundoForm, promedioLocalSegundoForm, promedioVisitantePrimerForm, promedioLocalPrimerForm, promedioTercerForm })
+}
+
+const promedioGolesPrimerFormulario = ( golesEquipo ) => {
+  const totalPartidos = Object.values(golesEquipo);
+  const totalPartidosLength = totalPartidos.length;
+  const subArrayOfGoles = totalPartidos.map( partido => Object.values(partido) );
+  const arrayOfGoles = subArrayOfGoles.flat(Infinity);
+  
+  let totalGoles = 0;
+
+  for( let i=0; i<arrayOfGoles.length; i++ ){
+    totalGoles += arrayOfGoles[i];
+  }
+
+  const promedio = totalGoles/totalPartidosLength;
+  return promedio;
+}
+
+const promedioGolesSegundoFormulario = ( datosEquipo ) => {
+  const { marcados, recibidos, partidos } = datosEquipo[1];
+  if ( partidos === 0 ) return 0;
+  const promedio = (marcados + recibidos) / partidos;
+  return promedio;
+}
+
+const promedioGolesTercerFormulario = ( datos ) => {
+  const totalDatos = Object.values(datos);
+
+  let golesMarcados = 0;
+  let golesRecibidos = 0;
+  const totalEnfrentamientos = totalDatos.length;
+
+  for ( let i=0; i<totalDatos.length; i++ ){
+    golesMarcados += totalDatos[i].marcados;
+    golesRecibidos += totalDatos[i].recibidos;
+  }
+
+  const promedio = ( golesMarcados + golesRecibidos ) / totalEnfrentamientos;
+
+  return promedio;
 }

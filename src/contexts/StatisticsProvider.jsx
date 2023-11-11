@@ -3,9 +3,8 @@ import { createContext, useState } from "react";
 export const StatsContext = createContext();
 
 const initialState = {
-  last5GeneralMatches: {},
-  totalGoalsInLeague: {},
-  lastMatchesBetween: {}
+  promedioGoles: 0,
+  // TODO : ambosEquiposMarcan: 
 }
 
 
@@ -14,15 +13,15 @@ export const StatisticsProvider = ({ children }) => {
     const [numberFormMenu, setNumberFormMenu] = useState(1);
     const [totalPartidos, setTotalPartidos] = useState(5);
     const [enfrentamientosJuntos, setEnfrentamientosJuntos] = useState(1);
-    const [resultsPerPage, setResultsPerPage] = useState(initialState);
+    const [resultadoEstadisticas, setResultadoEstadisticas] = useState(initialState);
 
     const valuesProvider = {
       numberFormMenu,
       setNumberFormMenu,
       totalPartidos, 
       setTotalPartidos,
-      resultsPerPage,
-      setResultsPerPage,
+      resultadoEstadisticas,
+      setResultadoEstadisticas,
       enfrentamientosJuntos,
       setEnfrentamientosJuntos
     }
