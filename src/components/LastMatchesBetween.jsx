@@ -8,7 +8,7 @@ import { StatsContext } from "../contexts/StatisticsProvider";
 export const LastMatchesBetween = () => {
 
   const { enfrentamientosJuntos, setEnfrentamientosJuntos } = useContext(StatsContext)
-  const { agregarPartidos, removerPartidos } = useHeaderForm(enfrentamientosJuntos, setEnfrentamientosJuntos);
+  const { agregarPartidos, removerPartidos } = useHeaderForm(enfrentamientosJuntos, setEnfrentamientosJuntos, 3);
   const { setResultadosBetween } = useContext(ResultsContext);
 
   const componentsPartidos = Array.from({ length: enfrentamientosJuntos }, (v, i) => {

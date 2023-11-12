@@ -7,7 +7,7 @@ import { StatsContext } from "../contexts/StatisticsProvider";
 export const HeaderForm = ({ localidad }) => {
 
   const { totalPartidos, setTotalPartidos } = useContext(StatsContext)
-  const { agregarPartidos, removerPartidos } = useHeaderForm(totalPartidos, setTotalPartidos);
+  const { agregarPartidos, removerPartidos } = useHeaderForm(totalPartidos, setTotalPartidos, 1);
 
   return (
     <>

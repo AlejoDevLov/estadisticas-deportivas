@@ -14,7 +14,8 @@ export const useCalculateButton = () => {
         resultadosEquipoLocal,
         resultadosEquipoVisitante,
         resultadosBetween,
-        totalPartidos
+        totalPartidos,
+        setResultadoEstadisticas
       }
 
     const nextFormMenu = () => {
@@ -62,7 +63,7 @@ const isSecondFormValid = (resultados) => {
 
 // Calcular promedio de goles
 const promedioGoles = ( argsPromedioGoles ) => {
-  const { golesEquipoLocal, golesEquipoVisitante, resultadosEquipoVisitante, resultadosEquipoLocal, resultadosBetween, totalPartidos } = argsPromedioGoles;
+  const { golesEquipoLocal, golesEquipoVisitante, resultadosEquipoVisitante, resultadosEquipoLocal, resultadosBetween, setResultadoEstadisticas } = argsPromedioGoles;
 
   const promedioLocalPrimerForm = promedioGolesPrimerFormulario(golesEquipoLocal);
   const promedioVisitantePrimerForm = promedioGolesPrimerFormulario(golesEquipoVisitante);
@@ -73,9 +74,16 @@ const promedioGoles = ( argsPromedioGoles ) => {
   const promedioTercerForm = promedioGolesTercerFormulario(resultadosBetween);
 
   const promedioForm1 = ( promedioLocalPrimerForm + promedioVisitantePrimerForm ) / 2;
-  const promedioForm2 = ( promedioLocalSegundoForm + promedioVisitanteSegundoForm ) / 2;
+  
+  let promedioForm2;
+  let esFalsoAlgunFormulario;
+  if ( promedioLocalSegundoForm !== false && promedioVisitanteSegundoForm !== false  ){
+    promedioForm2 = ( promedioLocalSegundoForm + promedioVisitanteSegundoForm ) / 2;
+  } else {
+    esFalsoAlgunFormulario = true;
+  }
 
-  calcularPromedioGoles( promedioForm1, promedioForm2, promedioTercerForm );
+  calcularPromedioGoles( promedioForm1, promedioForm2, promedioTercerForm, esFalsoAlgunFormulario, setResultadoEstadisticas );
 }
 
 const promedioGolesPrimerFormulario = ( golesEquipo ) => {
@@ -91,15 +99,12 @@ const promedioGolesPrimerFormulario = ( golesEquipo ) => {
   }
 
   const promedio = totalGoles/totalPartidosLength;
-  console.log(totalPartidos);
-  console.log(totalPartidosLength);
-  console.log(promedio);
   return promedio;
 }
 
 const promedioGolesSegundoFormulario = ( datosEquipo ) => {
   const { marcados, recibidos, partidos } = datosEquipo[1];
-  if ( partidos === 0 ) return 0;
+  if ( partidos === 0 ) return false;
   const promedio = (marcados + recibidos) / partidos;
   return promedio;
 }
@@ -121,11 +126,19 @@ const promedioGolesTercerFormulario = ( datos ) => {
   return promedio;
 }
 
-const calcularPromedioGoles = ( promedioForm1, promedioForm2, promedioForm3 ) => {
-  const promedio1 = ( promedioForm1 * 30 )/ 100;
-  const promedio2 = ( promedioForm2 * 30 )/ 100;
-  const promedio3 = ( promedioForm3 * 40 )/ 100;
-  const promedioFinal = promedio1 + promedio2 + promedio3;
+const calcularPromedioGoles = ( promedioForm1, promedioForm2, promedioForm3, esFalseAlgunFormulario, setResultadoEstadisticas ) => {
+  let promedioFinal;
 
-  console.log(promedioFinal);
+  if( esFalseAlgunFormulario ){
+    const promedio1 = ( promedioForm1 * 40 )/100;
+    const promedio3 = ( promedioForm3 * 60 )/100;
+    promedioFinal = promedio1 + promedio3;
+  } else {
+    const promedio1 = ( promedioForm1 * 30 )/100;
+    const promedio2 = ( promedioForm2 * 30 )/100;
+    const promedio3 = ( promedioForm3 * 40 )/100;
+    promedioFinal = promedio1 + promedio2 + promedio3;
+  }
+  
+  setResultadoEstadisticas( state => ({ ...state, ['promedioGoles']:promedioFinal }) )
 }
