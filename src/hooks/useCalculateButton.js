@@ -22,18 +22,19 @@ export const useCalculateButton = () => {
       switch(numberFormMenu){
         case 1
           : if (!isFirstFormValid(golesEquipoLocal) || !isFirstFormValid(golesEquipoVisitante)) return;
-          setNumberFormMenu( currentNumber => currentNumber + 1 );
-          break;
+            setNumberFormMenu( currentNumber => currentNumber + 1 );
+            break;
 
         case 2
           : if( !isSecondFormValid(resultadosEquipoLocal) || !isSecondFormValid(resultadosEquipoVisitante) ) return;
-          setNumberFormMenu( currentNumber => currentNumber + 1 );
-          break;
+            setNumberFormMenu( currentNumber => currentNumber + 1 );
+            break;
 
         case 3
           : isFirstFormValid(resultadosBetween);
-          promedioGoles(argsPromedioGoles);
-          return;
+            promedioGoles(argsPromedioGoles);
+            ambosEquiposMarcan(argsPromedioGoles);
+            return;
       }
     }
     
@@ -140,5 +141,62 @@ const calcularPromedioGoles = ( promedioForm1, promedioForm2, promedioForm3, esF
     promedioFinal = promedio1 + promedio2 + promedio3;
   }
   
-  setResultadoEstadisticas( state => ({ ...state, ['promedioGoles']:promedioFinal }) )
+  setResultadoEstadisticas( state => ({ ...state, ['promedioGoles']:promedioFinal }) );
+  console.log(promedioFinal);
+}
+
+const ambosEquiposMarcan = ( argsPromedioGoles ) => {
+  const { golesEquipoLocal, golesEquipoVisitante, resultadosBetween, setResultadoEstadisticas } = argsPromedioGoles;
+
+  const probabilidadLocalPrimerForm = probabilidadPrimerFormulario(golesEquipoLocal);
+  const probabilidadVisitantePrimerForm = probabilidadPrimerFormulario(golesEquipoVisitante);
+
+  const probabilidadTercerForm = probabilidadTercerFormulario(resultadosBetween);
+
+  calculaPromedioDefinitivo( probabilidadLocalPrimerForm, probabilidadVisitantePrimerForm, probabilidadTercerForm )
+}
+
+const probabilidadPrimerFormulario = ( resultadosEquipo ) => {
+  const totalPartidos = Object.values(resultadosEquipo);
+  const totalPartidosLength = totalPartidos.length;
+  const subArrayOfGoles = totalPartidos.map( partido => Object.values(partido) );
+  
+  const ambosEquiposMarcaron = calcularPromedio(subArrayOfGoles);
+
+  const probabilidad = ambosEquiposMarcaron/totalPartidosLength;
+
+  return probabilidad;
+}
+
+const probabilidadTercerFormulario = ( datos ) => {
+  const totalDatos = Object.values(datos);
+  const totalDatosLength = totalDatos.length;
+
+  const arrayResultados = totalDatos.map( resultado => Object.values(resultado) );
+  const ambosEquiposMarcaron = calcularPromedio(arrayResultados);
+
+  const probabilidad = ambosEquiposMarcaron/totalDatosLength;
+
+  return probabilidad;
+}
+
+const calcularPromedio = ( arrayDeGoles ) => {
+  let ambosEquiposMarcaron = 0;
+  arrayDeGoles.forEach( resultado => {
+    const isTrue = resultado.every( value => value > 0 );
+    isTrue ? ambosEquiposMarcaron += 1 : ambosEquiposMarcaron += 0;
+  });
+
+  return ambosEquiposMarcaron;
+}
+
+const calculaPromedioDefinitivo = ( prom1, prom2, prom3 ) => {
+
+  const promedio1 = (prom1 + prom2) / 2;
+  const ponderacionProm1 = ((promedio1 * 100) * 40 )/ 100;
+  const ponderacionProm2 = ((prom3 * 100)* 60 )/ 100;
+  const probabilidadAmbosMarcan = ((ponderacionProm1 + ponderacionProm2));
+
+  console.log({probabilidadAmbosMarcan});
+
 }
