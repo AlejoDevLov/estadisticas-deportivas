@@ -3,8 +3,8 @@ import { createContext, useState } from "react";
 export const StatsContext = createContext();
 
 const initialState = {
-  promedioGoles: 0,
-  // TODO : ambosEquiposMarcan: 
+  promedioGoles: 0, 
+  isComplete: false
 }
 
 

@@ -33,7 +33,7 @@ export const useCalculateButton = () => {
         case 3
           : isFirstFormValid(resultadosBetween);
             promedioGoles(argsPromedioGoles);
-            ambosEquiposMarcan(argsPromedioGoles);
+            ambosEquiposMarcan(argsPromedioGoles, setResultadoEstadisticas);
             return;
       }
     }
@@ -139,21 +139,22 @@ const calcularPromedioGoles = ( promedioForm1, promedioForm2, promedioForm3, esF
     const promedio2 = ( promedioForm2 * 30 )/100;
     const promedio3 = ( promedioForm3 * 40 )/100;
     promedioFinal = promedio1 + promedio2 + promedio3;
+    promedioFinal = promedioFinal.toFixed(2);
   }
   
   setResultadoEstadisticas( state => ({ ...state, ['promedioGoles']:promedioFinal }) );
-  console.log(promedioFinal);
+  // console.log(promedioFinal);
 }
 
-const ambosEquiposMarcan = ( argsPromedioGoles ) => {
-  const { golesEquipoLocal, golesEquipoVisitante, resultadosBetween, setResultadoEstadisticas } = argsPromedioGoles;
+const ambosEquiposMarcan = ( argsPromedioGoles, setResultadoEstadisticas ) => {
+  const { golesEquipoLocal, golesEquipoVisitante, resultadosBetween } = argsPromedioGoles;
 
   const probabilidadLocalPrimerForm = probabilidadPrimerFormulario(golesEquipoLocal);
   const probabilidadVisitantePrimerForm = probabilidadPrimerFormulario(golesEquipoVisitante);
 
   const probabilidadTercerForm = probabilidadTercerFormulario(resultadosBetween);
 
-  calculaPromedioDefinitivo( probabilidadLocalPrimerForm, probabilidadVisitantePrimerForm, probabilidadTercerForm )
+  calculaPromedioDefinitivo( probabilidadLocalPrimerForm, probabilidadVisitantePrimerForm, probabilidadTercerForm, setResultadoEstadisticas )
 }
 
 const probabilidadPrimerFormulario = ( resultadosEquipo ) => {
@@ -190,13 +191,14 @@ const calcularPromedio = ( arrayDeGoles ) => {
   return ambosEquiposMarcaron;
 }
 
-const calculaPromedioDefinitivo = ( prom1, prom2, prom3 ) => {
+const calculaPromedioDefinitivo = ( prom1, prom2, prom3, setResultadoEstadisticas ) => {
 
   const promedio1 = (prom1 + prom2) / 2;
   const ponderacionProm1 = ((promedio1 * 100) * 40 )/ 100;
   const ponderacionProm2 = ((prom3 * 100)* 60 )/ 100;
   const probabilidadAmbosMarcan = ((ponderacionProm1 + ponderacionProm2));
 
-  console.log({probabilidadAmbosMarcan});
+  // console.log({probabilidadAmbosMarcan});
+  setResultadoEstadisticas( state => ({ ...state, ambosEquiposMarcan:probabilidadAmbosMarcan, isComplete:true }));
 
 }

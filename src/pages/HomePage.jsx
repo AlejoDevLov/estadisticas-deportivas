@@ -1,5 +1,6 @@
 import { ButtonNext } from "../shared"
 import { useSelectFormComponent } from "../hooks"
+import { ResultsModal } from "../components";
 
 export const HomePage = () => {
 
@@ -15,6 +16,7 @@ export const HomePage = () => {
         { formComponent }
   
         <ButtonNext/>
+        <ResultsModal/>
     </div>
   )
 }
