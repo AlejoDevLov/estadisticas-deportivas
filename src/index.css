@@ -3,4 +3,67 @@
 @tailwind utilities;
 
 @layer utilities {
+    .animation-start{
+        animation-play-state: paused;
+}
+}
+
+@layer components{
+    .rotate-ball{
+        animation:  rotate-ball 3s linear infinite;
+        -webkit-animation:  rotate-ball 3s linear infinite;
+}
+    .translate-ball{
+        animation: translate-ball 0.7s ease-out forwards;
+        -webkit-animation: translate-ball 0.7s ease-out forwards;
+}
+    .confettis-drop{
+        animation: confettis-drop 1s linear;
+        -webkit-animation: confettis-drop 1s linear;
+}
+}
+
+@keyframes rotate-ball{
+    from{
+        transform: rotate(0deg);
+        -webkit-transform: rotate(0deg);
+        -moz-transform: rotate(0deg);
+        -ms-transform: rotate(0deg);
+        -o-transform: rotate(0deg);
+}
+    to {
+        transform: rotate(360deg);
+        -webkit-transform: rotate(360deg);
+        -moz-transform: rotate(360deg);
+        -ms-transform: rotate(360deg);
+        -o-transform: rotate(360deg);
+}
+}
+
+@keyframes translate-ball{
+    from{
+        transform: translate(0,0) scale(3);
+        -webkit-transform: translate(0,0) scale(3);
+        -moz-transform: translate(0,0) scale(3);
+        -ms-transform: translate(0,0) scale(3);
+        -o-transform: translate(0,0) scale(3);
+}
+    to {
+        transform: translate(60vw, -60vh) scale(1);
+        -webkit-transform: translate(60vw, -60vh) scale(1);
+        -moz-transform: translate(60vw, -60vh) scale(1);
+        -ms-transform: translate(60vw, -60vh) scale(1);
+        -o-transform: translate(60vw, -60vh) scale(1);
+}
+}
+
+@keyframes confettis-drop {
+    to {
+        transform: translateY(40vh);
+        -webkit-transform: translateY(40vh);
+        -moz-transform: translateY(40vh);
+        -ms-transform: translateY(40vh);
+        -o-transform: translateY(40vh);
+        opacity: 0.3;
+}
 }
