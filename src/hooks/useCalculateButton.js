@@ -196,7 +196,7 @@ const calculaPromedioDefinitivo = ( prom1, prom2, prom3, setResultadoEstadistica
   const promedio1 = (prom1 + prom2) / 2;
   const ponderacionProm1 = ((promedio1 * 100) * 40 )/ 100;
   const ponderacionProm2 = ((prom3 * 100)* 60 )/ 100;
-  const probabilidadAmbosMarcan = ((ponderacionProm1 + ponderacionProm2));
+  const probabilidadAmbosMarcan = Number(ponderacionProm1 + ponderacionProm2).toFixed(0);
 
   // console.log({probabilidadAmbosMarcan});
   setResultadoEstadisticas( state => ({ ...state, ambosEquiposMarcan:probabilidadAmbosMarcan, isComplete:true }));

@@ -32,7 +32,7 @@ export const ResultsModal = () => {
         <>
             <div className={divClass}>
                 <dialog open className="min-h-[50vh] w-3/4 rounded-md text-center top-1/3 left-1/6 max-w-xl flex flex-col relative font-bold overflow-hidden
-                    bg-gradient-to-t from-sky-500 to-blue-950">
+                    bg-gradient-to-t from-sky-500 to-blue-950 px-1">
                     <h1 className="text-slate-100 sm:text-4xl text-3xl py-6">¡Buena suerte con los resultados!</h1>
                     <h2 className="text-gray-100 text-xl py-2 font-semibold">Promedio de goles por partido: <span className="text-amber-400 font-bold">{ resultadoEstadisticas.promedioGoles }</span></h2>
                     <h2 className="text-gray-100 text-xl py-2 font-semibold">Probabilidad que ambos equipos marquen gol: <span className="text-amber-400 font-bold">{ resultadoEstadisticas.ambosEquiposMarcan }%</span></h2>
