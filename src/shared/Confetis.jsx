@@ -43,13 +43,9 @@ export const Confettis = ({ startAnimation }) => {
     // sizeConfetti = sizeConfetti.map((v) => v == 0 ? 3 : v );
 
     return (
-        <div ref={confetiRef} className="fixed top-0 w-full flex flex-wrap justify-evenly -translate-y-full">
+        <div ref={confetiRef} className="absolute -top-4 w-full flex flex-wrap justify-evenly -translate-y-full">
             {
-<<<<<<< HEAD
                 confettis.map( (v,i) => {
-=======
-                confettis.map( (i) => {
->>>>>>> 91dd7fd37b932865afcb2fa49b25bcdb93ee771d
                     return  (
                         <div 
                             key={i} 

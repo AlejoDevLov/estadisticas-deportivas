@@ -32,22 +32,23 @@ export const ResultsModal = () => {
         <>
             <div className={divClass}>
                 <dialog open className="h-1/2 w-3/4 rounded-md text-center top-1/3 left-1/6 max-w-xl flex flex-col relative font-bold overflow-hidden
-                    bg-gradient-to-t from-emerald-500 to-cyan-900">
-                    <h1 className="text-yellow-400 text-4xl py-6"><span className="text-5xl">¡</span>Buena suerte con los resultados<span className="text-5xl">!</span></h1>
-                    <h2 className="text-slate-800 text-xl py-2">Promedio de goles por partido: <span className="text-gray-100">{ resultadoEstadisticas.promedioGoles }</span></h2>
-                    <h2 className="text-slate-800 text-xl py-2">Probabilidad que ambos equipos marquen gol: <span className="text-gray-100">{ resultadoEstadisticas.ambosEquiposMarcan }%</span></h2>
+                    bg-gradient-to-t from-sky-500 to-blue-950">
+                    <h1 className="text-slate-100 text-4xl py-6"><span className="text-5xl">¡</span>Buena suerte con los resultados<span className="text-5xl">!</span></h1>
+                    <h2 className="text-gray-100 text-xl py-2 font-semibold">Promedio de goles por partido: <span className="text-amber-400 font-bold">{ resultadoEstadisticas.promedioGoles }</span></h2>
+                    <h2 className="text-gray-100 text-xl py-2 font-semibold">Probabilidad que ambos equipos marquen gol: <span className="text-amber-400 font-bold">{ resultadoEstadisticas.ambosEquiposMarcan }%</span></h2>
                     <button 
-                        className="py-3 rounded-full absolute bottom-4 left-1/2 -translate-x-1/2 text-white bg-blue-700 w-60 mx-auto text-xl hover:bg-blue-900 font-semibold"
+                        className="py-3 rounded-full absolute bottom-4 left-1/2 -translate-x-1/2 text-white bg-fuchsia-700 w-60 mx-auto text-xl hover:bg-fuchsia-900 font-semibold
+                            border-l-4 border-fuchsia-800 border-b-4 hover:border-t-2 hover:border-b-0 hover:border-fuchsia-600 duration-100"
                         onClick={closeModal}
                         >
                             OK
                     </button>
+                    <Confettis startAnimation={confettiAnimationState}/>
                 </dialog>
                 <div className={divImgClass}>
                     <img src="/src/assets/football.png" alt="football"
                         className={imgClass}/>
                 </div>
-                <Confettis startAnimation={confettiAnimationState}/>
             </div>
         </>
     )
