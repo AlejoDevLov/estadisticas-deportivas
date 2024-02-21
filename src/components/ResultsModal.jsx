@@ -38,7 +38,7 @@ export const ResultsModal = () => {
                     <h2 className="text-gray-100 text-xl py-2 font-semibold">Probabilidad que ambos equipos marquen gol: <span className="text-amber-400 font-bold">{ resultadoEstadisticas.ambosEquiposMarcan }%</span></h2>
                     <button 
                         className="py-3 rounded-full absolute bottom-4 left-1/2 -translate-x-1/2 text-white bg-fuchsia-700 w-60 mx-auto text-xl hover:bg-fuchsia-900 font-semibold
-                            border-l-4 border-fuchsia-800 border-b-4 hover:border-t-2 hover:border-b-0 hover:border-fuchsia-600 duration-100"
+                            border-l-4 border-fuchsia-800 border-b-4 hover:border-t-2 hover:border-b-0 hover:border-fuchsia-700 duration-100"
                         onClick={closeModal}
                         >
                             OK
