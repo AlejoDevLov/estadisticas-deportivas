@@ -2,7 +2,7 @@
 
 export const AddRemoveButton = ({ removerPartidos, agregarPartidos }) => {
     return (
-        <div className="flex items-center justify-center gap-x-4 mt-2">
+        <div className="flex items-center justify-center gap-x-4 mt-2 ">
         <div className="w-8 cursor-pointer" onClick={agregarPartidos}>
             <svg
             fill="none"

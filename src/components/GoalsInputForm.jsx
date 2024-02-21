@@ -46,7 +46,7 @@ export const GoalsInputForm = ({ golesMarcadosYRecibidos, keyValue }) => {
 
   return (
     <div className="flex text-xl my-4">
-        <div className="space-y-2">
+        <div className="space-y-2 flex items-center justify-center flex-wrap">
             <label className="text-emerald-400">Marcados</label>
             <input 
               type="number" 
@@ -57,7 +57,7 @@ export const GoalsInputForm = ({ golesMarcadosYRecibidos, keyValue }) => {
               onChange={onInputGoalsChange}
               name="marcados"/>
         </div>
-        <div className="space-y-2">
+        <div className="space-y-2  flex items-center justify-center flex-wrap">
             <label className="text-red-400">Recibidos</label>
             <input 
               type="number" 

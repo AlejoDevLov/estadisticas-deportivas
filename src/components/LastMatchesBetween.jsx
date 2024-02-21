@@ -17,7 +17,7 @@ export const LastMatchesBetween = () => {
 
 
   return (
-    <div className=" flex flex-col items-center justify-center ">
+    <div className=" flex flex-col items-center justify-center">
         <h3 className="text-3xl font-bold text-amber-500 text-center my-6">Últimos enfrentamientos entre ambos equipos</h3>
         <h4 className="text-2xl font-bold">Equipo local</h4>
         <AddRemoveButton agregarPartidos={agregarPartidos} removerPartidos={removerPartidos}/>
