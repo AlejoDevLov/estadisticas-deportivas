@@ -46,7 +46,7 @@ export const ResultsModal = () => {
                     <Confettis startAnimation={confettiAnimationState}/>
                 </dialog>
                 <div className={divImgClass}>
-                    <img src="/public/football.png" alt="football"
+                    <img src="./football.png" alt="football"
                         className={imgClass}/>
                 </div>
             </div>
