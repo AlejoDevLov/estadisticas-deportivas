@@ -1,8 +1,30 @@
-# React + Vite
+# Sporting Statistics  
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+⚽ **Sporting Statistics** is an app that helps users obtain **accurate probability-based results** for sports betting. By analyzing input data, the app performs mathematical calculations to estimate potential outcomes.  
 
-Currently, two official plugins are available:
+## ✨ Features  
+- **Data-Driven Predictions** – Calculates probability-based results for upcoming matches.  
+- **Three-Stage Input System** –  
+  1️⃣ Overall goals for each team's players.  
+  2️⃣ Goals and performance in the current or last league/tournament.  
+  3️⃣ Head-to-head match history between both teams.  
+- **Final Calculation** – Predicts **average goals per team** and the probability of both teams scoring.  
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🛠️ Technologies Used  
+- **React**  
+- **TailwindCSS**  
+
+## 🎯 Challenges Overcome  
+- Finding and implementing **accurate mathematical models** to generate reliable results.  
+
+## 🚀 How to Run Locally  
+```bash
+use git clone or download the zip of the project
+cd your-repo-name  
+npm install  
+npm run dev
+Then open http://localhost:3000/ in your browser. 
+```
+
+## 🔗 Live Demo
+[Check it out here](https://alejodevlov.github.io/estadisticas-deportivas/)
